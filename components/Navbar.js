@@ -2,6 +2,7 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import Link from "next/link";
+import { CgProfile } from "react-icons/cg";
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,6 +28,15 @@ export function Navbar() {
           >
             Get Started
           </Link>
+              <Link
+            className="text-gray-600 hover:text-indigo-600"
+            href="/dashboard/profile"
+          >
+            <CgProfile  className="text-4xl text-indigo-600"/>
+
+          </Link>
+          
+
         </nav>
 
         <button
@@ -50,6 +60,11 @@ export function Navbar() {
             className="block px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700"
           >
             Get Started
+          </Link>
+
+          <Link 
+            href="/dashboard/profile">
+            <CgProfile  className="text-4xl text-indigo-600"/>
           </Link>
         </div>
       )}

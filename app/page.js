@@ -1,9 +1,11 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
+  const router = useRouter();
 
   const categories = [
     "All",
@@ -43,15 +45,17 @@ export default function Home() {
       }}
     >
       <div className="backdrop-blur-md min-h-screen">
-      
         {/* Hero Section */}
         <section className="text-center py-16 px-4">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-indigo-50 ">
             Campus SkillHub
           </h1>
-          <h2 className="text-4xl font-extrabold text-gray-800">Find Skills in Your Campus 🚀</h2>
+          <h2 className="text-4xl font-extrabold text-gray-800">
+            Find Skills in Your Campus 🚀
+          </h2>
           <p className="mt-4 text-lg text-black max-w-2xl mx-auto">
-         Hire students for tutoring, tech, catering, fashion, entertainment, and more.
+            Hire students for tutoring, tech, catering, fashion, entertainment,
+            and more.
           </p>
 
           {/* Search */}
@@ -83,22 +87,32 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Services */}
         <section className="py-12 px-4 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filtered.length > 0 ? (
             filtered.map((s, i) => (
               <div
                 key={i}
-                className="p-6 bg-white/90  backdrop-blur rounded-xl shadow-md hover:shadow-xl transition text-center flex flex-col justify-between"
+                className="p-6 bg-white/90 backdrop-blur rounded-xl shadow-md hover:shadow-xl transition text-center flex flex-col justify-between"
               >
                 <div>
                   <h3 className="text-lg font-semibold text-black">
                     {s.title}
                   </h3>
-                  <p className="mt-1 text-sm text-black/40">
-                    {s.cat}
-                  </p>
+                  <p className="mt-1 text-sm text-black/40">{s.cat}</p>
                 </div>
-                <button className="mt-6 px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">
+                <button
+                  onClick={() =>
+                    router.push(
+                      `/dashboard/payment?title=${encodeURIComponent(
+                        s.title
+                      )}&cat=${encodeURIComponent(
+                        s.cat
+                      )}&ref=REF${Date.now()}`
+                    )
+                  }
+                  className="mt-6 px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition"
+                >
                   Book Now
                 </button>
               </div>
@@ -110,7 +124,6 @@ export default function Home() {
           )}
         </section>
       </div>
-
     </main>
   );
 }
