@@ -18,7 +18,7 @@ export default function Navbar() {
         <nav className="hidden md:flex">
           <ul className="flex gap-4 items-center">
             <li>
-              <Link href="/login" className="text-gray-700 hover:text-indigo-600">
+              <Link href="/auth/login" className="text-gray-700 hover:text-indigo-600">
                 Login
               </Link>
             </li>
@@ -28,15 +28,16 @@ export default function Navbar() {
                 Get Started
               </button>
             </li>
-
+            <Link href="/dashboard/profile">
             <li>
               <CgProfile className="text-3xl text-indigo-600 cursor-pointer hover:text-indigo-800" />
             </li>
+            </Link>
           </ul>
         </nav>
 
         <button
-          className="md:hidden text-3xl text-indigo-600"
+          className="md:hidden text-3xl text-block shadow"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <RxHamburgerMenu />
@@ -48,7 +49,7 @@ export default function Navbar() {
           <ul className="flex flex-col gap-4 p-4">
             <li>
               <Link
-                href="/login"
+                href="/auth/login"
                 className="block text-gray-700 hover:text-indigo-600"
                 onClick={() => setMenuOpen(false)}
               >
@@ -64,10 +65,11 @@ export default function Navbar() {
                 Get Started
               </button>
             </li>
-
+          <Link  href="dashboard/profile">
             <li>
               <CgProfile className="text-3xl text-indigo-600 cursor-pointer hover:text-indigo-800" />
             </li>
+          </Link>
           </ul>
         </nav>
       )}
