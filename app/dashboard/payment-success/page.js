@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function PaymentSuccess() {
+function PaymentSuccessContent() {
   const searchParams = useSearchParams();
   const title = searchParams.get("title") || "Unknown Service";
   const cat = searchParams.get("cat") || "General";
@@ -12,13 +13,21 @@ export default function PaymentSuccess() {
   return (
     <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 to-white px-4">
       <div className="bg-white w-full max-w-sm flex flex-col items-center justify-center gap-4 p-8 shadow-lg rounded-2xl text-center">
-        <h1 className="text-3xl font-bold text-green-600">Payment Successful 🎉</h1>
+        <h1 className="text-3xl font-bold text-green-600">
+          Payment Successful 🎉
+        </h1>
         <p className="text-gray-600">Your booking has been confirmed.</p>
 
         <div className="bg-green-50 p-4 rounded-lg w-full">
-          <p>Service: <b>{title}</b></p>
-          <p>Category: <b>{cat}</b></p>
-          <p>Reference ID: <span className="font-mono">{ref}</span></p>
+          <p>
+            Service: <b>{title}</b>
+          </p>
+          <p>
+            Category: <b>{cat}</b>
+          </p>
+          <p>
+            Reference ID: <span className="font-mono">{ref}</span>
+          </p>
         </div>
 
         {/* Go to Dashboard */}
@@ -36,5 +45,13 @@ export default function PaymentSuccess() {
         </Link>
       </div>
     </main>
+  );
+}
+
+export default function PaymentSuccess() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center">Loading payment details...</div>}>
+      <PaymentSuccessContent />
+    </Suspense>
   );
 }
