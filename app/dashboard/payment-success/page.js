@@ -1,14 +1,10 @@
-"use client";
-
 import Link from "next/link";
-import { Suspense } from "react";
-import { useSearchParams } from "next/navigation";
 
-function PaymentSuccessContent() {
-  const searchParams = useSearchParams();
-  const title = searchParams.get("title") || "Unknown Service";
-  const cat = searchParams.get("cat") || "General";
-  const ref = searchParams.get("ref") || "N/A";
+// Page is a Server Component by default in Next.js App Router
+export default function PaymentSuccess({ searchParams }) {
+  const title = searchParams?.title || "Unknown Service";
+  const cat = searchParams?.cat || "General";
+  const ref = searchParams?.ref || "N/A";
 
   return (
     <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 to-white px-4">
@@ -31,13 +27,13 @@ function PaymentSuccessContent() {
         </div>
 
         {/* Go to Dashboard */}
-        <Link href="/dashboard/dashboad">
+        <Link href="/dashboard/dashboard">
           <button className="mt-4 px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition w-full">
             Go to Dashboard
           </button>
         </Link>
 
-        {/* View Transactions Dashboard */}
+        {/* View Transactions */}
         <Link href="/dashboard/transactions">
           <button className="mt-2 px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition w-full">
             View Transactions
@@ -45,13 +41,5 @@ function PaymentSuccessContent() {
         </Link>
       </div>
     </main>
-  );
-}
-
-export default function PaymentSuccess() {
-  return (
-    <Suspense fallback={<div className="p-8 text-center">Loading payment details...</div>}>
-      <PaymentSuccessContent />
-    </Suspense>
   );
 }
