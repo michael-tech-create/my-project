@@ -30,4 +30,3 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
 });
 console.log(process.env.NEXTAUTH_URL);
-
