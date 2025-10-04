@@ -8,7 +8,7 @@ export default function PraticePage() {
 
   const handleClick = (value) => {
     if (value === "C") {
-      // clear everything
+      
       setDisplay("");
       setResult(null);
     } else if (value === "=") {
