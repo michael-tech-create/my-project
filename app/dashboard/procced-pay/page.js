@@ -35,11 +35,12 @@ export default function ProceedPayPage() {
         status: "pending_verification",
         createdAt: serverTimestamp(),
       });
-      alert("✅ Payment recorded successfully!");
-      router.push(`/dashboard/payment-success?title=${title}&cat=${cat}&ref=${ref}`);
+      router.push(
+        `/dashboard/payment-success?title=${title}&cat=${cat}&ref=${ref}`
+      );
     } catch (err) {
-      console.error("❌ Error recording transaction:", err);
-      alert("❌ Failed to record payment. Try again.");
+      console.error("Error recording transaction:", err);
+      alert("Failed to record payment. Try again.");
     } finally {
       setLoading(false);
     }
@@ -56,9 +57,10 @@ export default function ProceedPayPage() {
         <h1 className="text-3xl font-bold text-purple-600">Confirm Payment 💳</h1>
         <p className="text-gray-600">Service: {title}</p>
         <p className="text-gray-600">Category: {cat}</p>
-        <p className="text-sm text-gray-500">Reference ID: <span className="font-mono">{ref}</span></p>
+        <p className="text-sm text-gray-500">
+          Reference ID: <span className="font-mono">{ref}</span>
+        </p>
 
-        {/* Account Details */}
         <div className="bg-indigo-50 p-4 rounded-lg w-full">
           <p>Bank: <b>{account.bank}</b></p>
           <p>Account Name: <b>{account.accountName}</b></p>
@@ -71,7 +73,7 @@ export default function ProceedPayPage() {
           onClick={handleConfirmPayment}
           className="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-semibold w-full"
         >
-          {loading ? "Proccessing..." : "Confirm Payment"}
+          {loading ? "Processing..." : "Confirm Payment"}
         </motion.button>
       </motion.div>
     </main>
