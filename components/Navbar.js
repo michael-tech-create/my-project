@@ -37,7 +37,7 @@ export default function Navbar() {
         </nav>
 
         <button
-          className="md:hidden text-3xl text-block shadow"
+          className="md:hidden text-3xl text-block text-indigo-600 shadow"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <RxHamburgerMenu />
