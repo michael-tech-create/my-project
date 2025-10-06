@@ -1,8 +1,10 @@
-"use client"; 
+"use client";
+
 import Link from "next/link";
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function Payment() {
+function PaymentContent() {
   const searchParams = useSearchParams();
   const title = searchParams.get("title") || "Unknown Service";
   const cat = searchParams.get("cat") || "General";
@@ -19,7 +21,7 @@ export default function Payment() {
         </p>
 
         <Link
-          href={`/dashboard/procced-pay?title=${(title)}&cat=${(cat)}&ref=${(ref)}`}
+          href={`/dashboard/procced-pay?title=${encodeURIComponent(title)}&cat=${encodeURIComponent(cat)}&ref=${encodeURIComponent(ref)}`}
         >
           <button className="mt-4 px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
             Proceed to Pay
@@ -27,5 +29,13 @@ export default function Payment() {
         </Link>
       </div>
     </main>
+  );
+}
+
+export default function Payment() {
+  return (
+    <Suspense fallback={<div className="text-center mt-10 text-gray-600">Loading payment info...</div>}>
+      <PaymentContent />
+    </Suspense>
   );
 }

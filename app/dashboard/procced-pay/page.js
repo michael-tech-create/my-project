@@ -1,13 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { db } from "@/config/firebaseconfig";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
-
-export default function ProceedPayPage() {
+function ProceedPayContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -36,8 +35,9 @@ export default function ProceedPayPage() {
         status: "verified",
         createdAt: serverTimestamp(),
       });
+
       router.push(
-        `/dashboard/payment-success?title=${title}&cat=${cat}&ref=${ref}`
+        `/dashboard/payment-success?title=${encodeURIComponent(title)}&cat=${encodeURIComponent(cat)}&ref=${encodeURIComponent(ref)}`
       );
     } catch (err) {
       console.error("Error recording transaction:", err);
@@ -74,9 +74,17 @@ export default function ProceedPayPage() {
           onClick={handleConfirmPayment}
           className="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-semibold w-full"
         >
-          {loading ? "Proccessing.." : "Confirm Payment"}
+          {loading ? "Processing..." : "Confirm Payment"}
         </motion.button>
       </motion.div>
     </main>
+  );
+}
+
+export default function ProceedPayPage() {
+  return (
+    <Suspense fallback={<div className="text-center mt-10 text-gray-600">Loading payment details...</div>}>
+      <ProceedPayContent />
+    </Suspense>
   );
 }
