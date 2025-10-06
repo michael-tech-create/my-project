@@ -16,7 +16,7 @@ export default function TransactionsPage() {
       setTransactions(data);
     });
 
-    return () => unsubscribe(); // cleanup
+    return () => unsubscribe(); 
   }, []);
 
   return (

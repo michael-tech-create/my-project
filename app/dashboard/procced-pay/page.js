@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { db } from "@/config/firebaseconfig";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
+
 export default function ProceedPayPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -32,7 +33,7 @@ export default function ProceedPayPage() {
         bank: account.bank,
         accountNumber: account.accountNumber,
         accountName: account.accountName,
-        status: "pending_verification",
+        status: "verified",
         createdAt: serverTimestamp(),
       });
       router.push(
@@ -73,7 +74,7 @@ export default function ProceedPayPage() {
           onClick={handleConfirmPayment}
           className="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-semibold w-full"
         >
-          {loading ? "Processing..." : "Confirm Payment"}
+          {loading ? "Proccessing.." : "Confirm Payment"}
         </motion.button>
       </motion.div>
     </main>

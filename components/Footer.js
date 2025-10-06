@@ -13,7 +13,7 @@ export default function Footer() {
         <div>
           <h2 className="text-2xl font-bold text-indigo-500">Campus SkillHub</h2>
           <p className="mt-2 text-sm">
-            Connecting Skills, Empowering Students 
+            Connecting Skills, Empowering Students 🚀
           </p>
         </div>
 

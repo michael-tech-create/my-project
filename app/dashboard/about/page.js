@@ -137,7 +137,7 @@ export default function AboutPage() {
               },
               {
                 icon: <FaMapMarkerAlt className="text-4xl text-indigo-300 mb-3" />,
-                text: "Lagos, Nigeria",
+                text: "Abuja, Nigeria",
               },
             ].map((info, i) => (
               <motion.div

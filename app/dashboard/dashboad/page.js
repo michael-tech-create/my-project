@@ -44,8 +44,8 @@ export default function Dashboard() {
 
   return (
     <main className="min-h-screen bg-gradient-to-r from-indigo-50 to-white px-6 py-10">
-      <div className="max-w-4xl mx-auto bg-white/80 p-8 rounded-xl shadow-lg">
-        <h1 className="text-3xl font-bold text-center text-indigo-600">
+      <div className="max-w-4xl mx-auto bg-indigo-100/80 p-8 rounded-xl shadow-lg mt-12">
+        <h1 className="text-3xl font-bold text-center text-indigo-800">
           Dashboard – Manage Your Services
         </h1>
 
@@ -88,7 +88,7 @@ export default function Dashboard() {
             services.map((s) => (
               <div
                 key={s.id}
-                className="p-6 bg-white shadow rounded-xl border hover:shadow-lg transition"
+                className="p-6 bg-white shadow rounded-xl border-1 border-indigo-400 hover:shadow-lg transition"
               >
                 <h3 className="text-lg font-semibold">{s.title}</h3>
                 <p className="text-sm text-gray-500">{s.cat}</p>

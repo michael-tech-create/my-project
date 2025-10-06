@@ -1,5 +1,4 @@
-"use client"; // ← Important! This makes the page a client component
-
+"use client"; 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
@@ -20,7 +19,7 @@ export default function Payment() {
         </p>
 
         <Link
-          href={`/dashboard/procced-pay?title=${encodeURIComponent(title)}&cat=${encodeURIComponent(cat)}&ref=${encodeURIComponent(ref)}`}
+          href={`/dashboard/procced-pay?title=${(title)}&cat=${(cat)}&ref=${(ref)}`}
         >
           <button className="mt-4 px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
             Proceed to Pay

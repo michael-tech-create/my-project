@@ -149,9 +149,9 @@ export default function Home() {
               <button
                 onClick={() =>
                   router.push(
-                    `/dashboard/payment?title=${encodeURIComponent(
+                    `/dashboard/payment?title=${(
                       s.title
-                    )}&cat=${encodeURIComponent(
+                    )}&cat=${(
                       s.cat
                     )}&ref=REF${Date.now()}`
                   )

@@ -1,4 +1,4 @@
-"use client"; // Needed because we access searchParams dynamically
+"use client"; // ← Important!
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -6,9 +6,9 @@ import { useSearchParams } from "next/navigation";
 export default function PaymentSuccess() {
   const searchParams = useSearchParams();
 
-  const title = searchParams.get("title") || "Unknown Service";
-  const cat = searchParams.get("cat") || "General";
-  const ref = searchParams.get("ref") || "N/A";
+  const title = searchParams?.get("title") || "Unknown Service";
+  const cat = searchParams?.get("cat") || "General";
+  const ref = searchParams?.get("ref") || "N/A";
 
   return (
     <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 to-white px-4">
@@ -19,15 +19,9 @@ export default function PaymentSuccess() {
         <p className="text-gray-600">Your booking has been confirmed.</p>
 
         <div className="bg-green-50 p-4 rounded-lg w-full">
-          <p>
-            Service: <b>{title}</b>
-          </p>
-          <p>
-            Category: <b>{cat}</b>
-          </p>
-          <p>
-            Reference ID: <span className="font-mono">{ref}</span>
-          </p>
+          <p>Service: <b>{title}</b></p>
+          <p>Category: <b>{cat}</b></p>
+          <p>Reference ID: <span className="font-mono">{ref}</span></p>
         </div>
 
         <Link href="/dashboard/dashboad">
