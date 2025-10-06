@@ -65,7 +65,7 @@ export default function Navbar() {
                 Get Started
               </button>
             </li>
-          <Link  href="dashboard/profile">
+          <Link  href="/dashboard/profile">
             <li>
               <CgProfile className="text-3xl text-indigo-600 cursor-pointer hover:text-indigo-800" />
             </li>
